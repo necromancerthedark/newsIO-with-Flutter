@@ -34,10 +34,9 @@ class homePage extends StatefulWidget {
 class _homePageState extends State<homePage> {
   Future<News> newsData;
   WebViewController _controller;
-
+  String urlForJson = "your api url";
   Future<News> fetchNews() async {
-    final response = await http.get(
-        "https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=41777a69b62348faa1f6b3e831e14b3b");
+    final response = await http.get(urlForJson);
     if (response.statusCode == 200) {
       return News.fromJson(jsonDecode(response.body));
     } else {
